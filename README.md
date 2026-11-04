@@ -9,7 +9,7 @@ Proyecto final desarrollado para la asignatura **Temas Selectos de Probabilidad 
 ---
 
 ## 📌 Contexto Físico y Relevancia Actuarial
-
+ 
 En oceanografía física y gestión de riesgos hidrometeorológicos, modelar conjuntamente la **Velocidad del Viento ($m/s$)** y la **Altura Significativa del Oleaje ($m$)** es crítico para:
 - Cuantificar riesgos de navegación e infraestructuras offshore/costeras.
 - Evaluar probabilidades de falla estructural ante eventos extremos conjuntos (huracanes y marejadas).
