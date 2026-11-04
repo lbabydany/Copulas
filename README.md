@@ -31,3 +31,17 @@ En la oceanografía física y el análisis actuarial de riesgos climáticos, la 
    - Debido a la concentración asimétrica en el cuadrante $(1, 1)$ (dependencia de cola superior $\lambda_U > 0$), se calibra el parámetro $\theta$ de Gumbel mediante un algoritmo de **Cómputo Bayesiano Aproximado (Approximate Bayesian Computation - ABC)** minimizando el error cuadrático respecto a la cópula empírica.
 
 ---
+
+## 📂 Estructura del Repositorio
+
+```text
+├── 320088175.csv                   # Base de datos histórica procesada de la boya NOAA
+├── copulas.jl                      # Implementación de C_n(u,v), Spearman y Schweizer-Wolff
+├── copulasaux.jl                   # Cálculo de rangos y pseudo-observaciones empíricas
+├── proyecto_final.jl               # Pipeline completo (ETL, MLE, calibración ABC y visualización)
+├── dispersion_viento_oleaje.png    # Gráfica: Dispersión en unidades físicas
+├── pseudo_observaciones.png        # Gráfica: Distribución en el cuadrado unitario [0, 1]²
+├── ajuste_marginales.png           # Gráfica: Comparativa de marginales ajustadas
+├── simulacion_gumbel.png           # Gráfica: Simulación bivariada de la cópula ajustada
+├── curvas_nivel_comparacion.png    # Gráfica: Contornos Cópula Empírica vs Gumbel
+└── README.md
