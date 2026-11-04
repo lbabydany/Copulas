@@ -38,7 +38,7 @@ En la oceanografía física y el análisis actuarial de riesgos climáticos, la 
 ├── 320088175.csv                   # Base de datos histórica procesada de la boya NOAA
 ├── copulas.jl                      # Implementación de C_n(u,v), Spearman y Schweizer-Wolff
 ├── copulasaux.jl                   # Cálculo de rangos y pseudo-observaciones empíricas
-├── proyecto_final.jl               # Pipeline completo (ETL, MLE, calibración ABC y visualización)
+├── proyecto_final_tspe.jl               # Pipeline completo (ETL, MLE, calibración ABC y visualización)
 ├── dispersion_viento_oleaje.png    # Gráfica: Dispersión en unidades físicas
 ├── pseudo_observaciones.png        # Gráfica: Distribución en el cuadrado unitario [0, 1]²
 ├── ajuste_marginales.png           # Gráfica: Comparativa de marginales ajustadas
