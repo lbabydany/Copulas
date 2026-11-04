@@ -1,19 +1,35 @@
-# Modelación de Dependencia Multivariada Mediante Cópulas
+# Modelación de Dependencia Oceanográfica Viento-Oleaje mediante Cópula de Gumbel
 
-[![Julia](https://img.shields.io/badge/Language-Julia_1.10+-9558B2?style=flat&logo=julia)](https://julialang.org)
+[![Julia](https://img.shields.io/badge/Language-Julia_1.9+-9558B2?style=flat&logo=julia)](https://julialang.org)
+[!(https://img.shields.io/badge/Data-NOAA_NDBC-003366.svg)](https://www.ndbc.noaa.gov/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-Completed-success)](#)
 
-> Proyecto final para la materia **Temas Selectos de Probabilidad y Estadística** (Licenciatura en Actuaría, UNAM FES Acatlán).
+Proyecto final desarrollado para la asignatura **Temas Selectos de Probabilidad y Estadística** (Licenciatura en Actuaría, UNAM FES Acatlán).
 
 ---
 
-## 📌 Resumen Ejecutivo
+## 📌 Contexto Físico y Relevancia Actuarial
 
-En el análisis cuantitativo de riesgos y fenómenos multivariados, asumir normalidad multivariada o dependencia lineal (correlación de Pearson) subestima gravemente los eventos de cola y la dependencia asimétrica. 
+En oceanografía física y gestión de riesgos hidrometeorológicos, modelar conjuntamente la **Velocidad del Viento ($m/s$)** y la **Altura Significativa del Oleaje ($m$)** es crítico para:
+- Cuantificar riesgos de navegación e infraestructuras offshore/costeras.
+- Evaluar probabilidades de falla estructural ante eventos extremos conjuntos (huracanes y marejadas).
+- Modelar adecuadamente fenómenos asimétricos: el viento transfiere energía cinética al mar de forma rápida, pero el oleaje elevado persiste aun cuando el viento amaina (*mar de fondo*).
 
-Este proyecto implementa la teoría del **Teorema de Sklar** para desacoplar el comportamiento de las distribuciones marginales de la estructura de dependencia conjunta. A través de familias paramétricas de **cópulas elípticas** (Gaussiana, t-Student) y **arquimedianas** (Clayton, Gumbel, Frank), se modela y evalúa la estructura de riesgo conjunto en datos empíricos.
+Asumir dependencia lineal o normalidad subestima severamente la cola superior. Por ello, se implementa el **Teorema de Sklar** para aislar la estructura de dependencia asimétrica mediante la **Cópula de Gumbel** tras modelar las distribuciones marginales.
 
+---
+
+## 🔬 Flujo de Trabajo Metodológico
+
+```text
+  Registros Crudos NOAA ──> Filtrado de Nulos (99.0) ──> Pseudo-observaciones (U, V)
+                                                                    │
+           ┌────────────────────────────────────────────────────────┴───────────────────────────┐
+           ▼                                                                                    ▼
+  Ajuste de Marginales                                                             Cópula Empírica vs Paramétrica
+  ├─ Viento: Gamma(α, θ) vs Weibull(k, λ) [MLE]                                     ├─ Schweizer-Wolff y Rho de Spearman
+  └─ Oleaje: Weibull(k, λ) [MLE]                                                    ├─ Diagonales Principal C(t,t) y Secundaria C(t, 1-t)
+                                                                                    └─ Calibración ABC de Cópula de Gumbel: θ̂
 ---
 
 ## 🔬 Marco Metodológico
@@ -39,4 +55,4 @@ Este proyecto implementa la teoría del **Teorema de Sklar** para desacoplar el 
 
 ## 📊 Datos Utilizados
 
-- **Fuente:** *(Describe brevemente la base de datos: e.g., series
+- **Fuente:** *Registros históricos de boyas del National Data Buoy Center (NDBC - NOAA).
